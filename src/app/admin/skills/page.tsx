@@ -27,7 +27,7 @@ export default async function AdminSkillsPage() {
             <Input
               id="category"
               name="category"
-              placeholder="Frontend / Backend / Database / Tools"
+              placeholder="Frontend / Backend / Mobile / Database / Tools"
               required
               className="bg-surface"
             />

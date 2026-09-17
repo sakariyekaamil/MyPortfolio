@@ -62,15 +62,28 @@ export async function getProjects(): Promise<Project[]> {
   try {
     const rows = await prisma.project.findMany({ orderBy: { order: "asc" } });
     if (rows.length === 0) return fallbackProjects;
-    return rows.map((row) => ({
-      id: row.id,
-      title: row.title,
-      description: row.description,
-      technologies: row.technologies,
-      image: row.image,
-      githubUrl: row.githubUrl ?? undefined,
-      liveUrl: row.liveUrl ?? undefined,
-    }));
+
+    const byTitle = new Map(
+      fallbackProjects.map((project) => [project.title.toLowerCase(), project])
+    );
+
+    return rows.map((row) => {
+      const fallback = byTitle.get(row.title.toLowerCase());
+      const liveUrl = fallback?.liveUrl ?? row.liveUrl ?? undefined;
+      const githubUrl = fallback?.githubUrl ?? row.githubUrl ?? undefined;
+
+      return {
+        id: row.id,
+        title: row.title,
+        description: row.description,
+        technologies: row.technologies,
+        image: fallback?.image ?? row.image,
+        githubUrl:
+          githubUrl && githubUrl !== "https://github.com" ? githubUrl : undefined,
+        liveUrl:
+          liveUrl && !liveUrl.includes("example.com") ? liveUrl : undefined,
+      };
+    });
   } catch {
     return fallbackProjects;
   }

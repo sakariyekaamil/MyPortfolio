@@ -44,7 +44,7 @@ export const footerLinks: NavLink[] = [
 export const socialLinks: SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/soojeed",
     icon: "github",
   },
   {

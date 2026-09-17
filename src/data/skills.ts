@@ -42,6 +42,21 @@ export const skills: Skill[] = [
     description: "Server-side runtime",
   },
   {
+    name: "C#",
+    category: "Backend",
+    description: "App & API development",
+  },
+  {
+    name: "Python",
+    category: "Backend",
+    description: "Scripting & backends",
+  },
+  {
+    name: "C++",
+    category: "Backend",
+    description: "Systems programming",
+  },
+  {
     name: "Express.js",
     category: "Backend",
     description: "API frameworks",
@@ -67,9 +82,29 @@ export const skills: Skill[] = [
     description: "Role permissions",
   },
   {
+    name: "Flutter",
+    category: "Mobile",
+    description: "Cross-platform apps",
+  },
+  {
+    name: "React Native",
+    category: "Mobile",
+    description: "Native mobile UIs",
+  },
+  {
     name: "PostgreSQL",
     category: "Database",
     description: "Relational data",
+  },
+  {
+    name: "SQL Server",
+    category: "Database",
+    description: "Enterprise databases",
+  },
+  {
+    name: "SSMS",
+    category: "Database",
+    description: "SQL Server tooling",
   },
   {
     name: "Prisma",
@@ -97,6 +132,11 @@ export const skills: Skill[] = [
     description: "Collaboration",
   },
   {
+    name: "DevOps",
+    category: "Tools",
+    description: "CI/CD & deployment",
+  },
+  {
     name: "VS Code",
     category: "Tools",
     description: "Primary editor",
@@ -116,6 +156,7 @@ export const skills: Skill[] = [
 export const skillCategories = [
   "Frontend",
   "Backend",
+  "Mobile",
   "Database",
   "Tools",
 ] as const;

@@ -17,7 +17,7 @@ export const projects: Project[] = [
     ],
     image: "/projects/restaurant.png",
     githubUrl: "https://github.com",
-    liveUrl: "https://exelennce-cleint.vercel.app/login",
+    liveUrl: "https://exelennce-cleint.vercel.app/",
   },
   {
     id: "guribile-events",
@@ -35,7 +35,6 @@ export const projects: Project[] = [
     ],
     image: "/projects/events.png",
     githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
   },
   {
     id: "scholarship-ai",
@@ -52,7 +51,6 @@ export const projects: Project[] = [
     ],
     image: "/projects/scholarship.svg",
     githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
   },
   {
     id: "blogify",
@@ -62,7 +60,6 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
     image: "/projects/blogy.png",
     githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
   },
   {
     id: "construction-cms",
@@ -77,7 +74,40 @@ export const projects: Project[] = [
       "PostgreSQL",
     ],
     image: "/projects/construction.png?v=2",
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/soojeed/Smart-construction-system",
+    liveUrl: "https://shanfool-construction-management-sy.vercel.app/login",
+  },
+  {
+    id: "zoo-management",
+    title: "Zoo Management System",
+    description:
+      "A zoo operations platform for managing animals, enclosures, staff, visitors, tickets, and daily zoo management workflows.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Prisma",
+      "PostgreSQL",
+      "Tailwind CSS",
+    ],
+    image: "/projects/zoo.png",
+    githubUrl: "https://github.com/soojeed/WaranAbde-Zoo",
+    liveUrl: "https://zoo-management-system-oh9g.vercel.app/login",
+  },
+  {
+    id: "luxury-perfumes",
+    title: "Luxury Perfumes ERP",
+    description:
+      "A business management platform for luxury perfume stores — stock, sales, purchases, payments, and performance reports in one place.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Prisma",
+      "PostgreSQL",
+      "Tailwind CSS",
+    ],
+    image: "/projects/luxury-perfumes.png",
+    liveUrl: "https://luxury-perfumes-cleint.vercel.app/login",
   },
 ];
