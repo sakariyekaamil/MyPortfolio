@@ -1,78 +1,48 @@
 import { AdminShell } from "@/components/admin/AdminShell";
 import { AdminForm } from "@/components/admin/AdminToast";
-import { createProjectAction, deleteProjectAction } from "@/app/admin/actions";
+import { AddProjectDialog } from "@/components/admin/AddProjectDialog";
+import { deleteProjectAction } from "@/app/admin/actions";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 
 export default async function AdminProjectsPage() {
   const projects = await prisma.project.findMany({ orderBy: { order: "asc" } });
 
   return (
     <AdminShell title="Projects">
-      <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-        <AdminForm
-          action={createProjectAction}
-          successMessage="Project saved successfully"
-          className="space-y-4 rounded-2xl border border-border bg-card p-5"
-        >
-          <h3 className="font-medium">Add Project</h3>
-          <div className="space-y-2">
-            <Label htmlFor="title">Title</Label>
-            <Input id="title" name="title" required className="bg-surface" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
-            <Textarea
-              id="description"
-              name="description"
-              required
-              className="bg-surface"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="technologies">Technologies (comma separated)</Label>
-            <Input
-              id="technologies"
-              name="technologies"
-              placeholder="Next.js, TypeScript, Prisma"
-              className="bg-surface"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="image">Image path</Label>
-            <Input
-              id="image"
-              name="image"
-              placeholder="/projects/restaurant.png"
-              className="bg-surface"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="liveUrl">Live Demo URL</Label>
-            <Input id="liveUrl" name="liveUrl" className="bg-surface" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="githubUrl">GitHub URL</Label>
-            <Input id="githubUrl" name="githubUrl" className="bg-surface" />
-          </div>
-          <Button type="submit">Save Project</Button>
-        </AdminForm>
+      <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h3 className="text-sm font-medium sm:text-base">
+            All Projects ({projects.length})
+          </h3>
+          <AddProjectDialog />
+        </div>
 
-        <div className="rounded-2xl border border-border bg-card p-5">
-          <h3 className="mb-4 font-medium">All Projects ({projects.length})</h3>
-          <div className="space-y-3">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="rounded-xl border border-border p-3"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="font-medium">{project.title}</p>
-                    <p className="mt-1 line-clamp-2 text-sm text-muted">
+        <div className="space-y-3">
+          {projects.length === 0 ? (
+            <p className="text-sm text-muted">
+              No projects yet. Click + to add one.
+            </p>
+          ) : null}
+
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="rounded-xl border border-border p-3"
+            >
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex min-w-0 flex-1 gap-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-16 w-20 shrink-0 rounded-lg border border-border bg-surface object-cover sm:w-24"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium sm:text-base">
+                      {project.title}
+                    </p>
+                    <p className="mt-1 line-clamp-2 text-xs text-muted sm:text-sm">
                       {project.description}
                     </p>
                     {project.liveUrl ? (
@@ -80,25 +50,26 @@ export default async function AdminProjectsPage() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-2 inline-block text-xs text-primary"
+                        className="mt-2 inline-block break-all text-xs text-primary"
                       >
                         {project.liveUrl}
                       </a>
                     ) : null}
                   </div>
-                  <AdminForm
-                    action={deleteProjectAction}
-                    successMessage="Project deleted"
-                  >
-                    <input type="hidden" name="id" value={project.id} />
-                    <Button type="submit" variant="ghost" size="sm">
-                      Delete
-                    </Button>
-                  </AdminForm>
                 </div>
+                <AdminForm
+                  action={deleteProjectAction}
+                  successMessage="Project deleted"
+                  className="self-end sm:self-start"
+                >
+                  <input type="hidden" name="id" value={project.id} />
+                  <Button type="submit" variant="ghost" size="sm">
+                    Delete
+                  </Button>
+                </AdminForm>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </AdminShell>

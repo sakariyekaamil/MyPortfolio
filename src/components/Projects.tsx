@@ -13,14 +13,14 @@ export function Projects({ projects }: { projects: Project[] }) {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative py-20 md:py-28">
+    <section id="projects" className="relative py-14 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Featured Projects"
           subtitle="Some of the systems and applications I've built."
         />
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -38,7 +38,7 @@ export function Projects({ projects }: { projects: Project[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] flex items-end justify-center bg-black/70 p-0 backdrop-blur-sm sm:items-center sm:p-4"
             onClick={() => setSelected(null)}
           >
             <motion.div
@@ -46,7 +46,7 @@ export function Projects({ projects }: { projects: Project[] }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.25 }}
-              className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-border bg-card p-6 shadow-2xl"
+              className="relative max-h-[92vh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-t-2xl border border-border bg-card p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-2xl sm:max-h-[85vh] sm:rounded-2xl sm:p-6"
               onClick={(event) => event.stopPropagation()}
               role="dialog"
               aria-modal="true"
@@ -55,7 +55,7 @@ export function Projects({ projects }: { projects: Project[] }) {
               <button
                 type="button"
                 onClick={() => setSelected(null)}
-                className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted hover:text-foreground"
+                className="absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border text-muted hover:text-foreground sm:right-4 sm:top-4 sm:h-9 sm:w-9"
                 aria-label="Close project details"
               >
                 <X className="h-4 w-4" />
@@ -63,11 +63,11 @@ export function Projects({ projects }: { projects: Project[] }) {
 
               <h3
                 id="project-details-title"
-                className="pr-10 text-2xl font-semibold text-foreground"
+                className="pr-12 text-xl font-semibold text-foreground sm:text-2xl"
               >
                 {selected.title}
               </h3>
-              <p className="mt-4 text-muted leading-relaxed">
+              <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
                 {selected.description}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
@@ -80,13 +80,13 @@ export function Projects({ projects }: { projects: Project[] }) {
                   </span>
                 ))}
               </div>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
                 {selected.githubUrl ? (
                   <a
                     href={selected.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(buttonVariants())}
+                    className={cn(buttonVariants(), "w-full justify-center sm:w-auto")}
                   >
                     GitHub
                   </a>
@@ -96,7 +96,10 @@ export function Projects({ projects }: { projects: Project[] }) {
                     href={selected.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(buttonVariants({ variant: "secondary" }))}
+                    className={cn(
+                      buttonVariants({ variant: "secondary" }),
+                      "w-full justify-center sm:w-auto"
+                    )}
                   >
                     Live Demo
                   </a>

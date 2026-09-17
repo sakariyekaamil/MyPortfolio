@@ -7,7 +7,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="relative border-y border-border/60 bg-transparent py-20 md:py-28"
+      className="relative border-y border-border/60 bg-transparent py-14 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
@@ -15,7 +15,7 @@ export function Experience() {
           subtitle="Building software products and supporting clients in real business environments."
         />
 
-        <div className="relative ml-2 space-y-8 border-l border-border pl-6 sm:pl-8">
+        <div className="relative ml-1 space-y-6 border-l border-border pl-5 sm:ml-2 sm:space-y-8 sm:pl-8">
           {experience.map((item, index) => (
             <Reveal key={item.id} delay={index * 0.08}>
               <div className="relative">

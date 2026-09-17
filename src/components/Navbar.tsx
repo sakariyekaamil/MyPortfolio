@@ -88,7 +88,7 @@ export function Navbar({ site }: { site: SiteContent }) {
         ) : null}
       </AnimatePresence>
 
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-4 sm:px-4 sm:pt-5">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-2 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-4 sm:pt-5">
         <motion.div
           initial={{ opacity: 0, y: -28, scale: 0.96 }}
           animate={{
@@ -101,7 +101,7 @@ export function Navbar({ site }: { site: SiteContent }) {
             y: { duration: 0.55, ease: easeOut },
             scale: { type: "spring", stiffness: 280, damping: 26 },
           }}
-          className="pointer-events-auto relative mx-auto flex max-w-5xl items-center justify-between gap-3 rounded-full border border-white/80 bg-white px-3 py-2.5 shadow-[0_10px_40px_rgba(0,0,0,0.22)] sm:px-4"
+          className="pointer-events-auto relative mx-auto flex max-w-5xl items-center justify-between gap-2 rounded-full border border-white/80 bg-white px-2.5 py-2 shadow-[0_10px_40px_rgba(0,0,0,0.22)] sm:gap-3 sm:px-4 sm:py-2.5"
           style={{ transformOrigin: "top center" }}
         >
           <motion.a
@@ -111,17 +111,15 @@ export function Navbar({ site }: { site: SiteContent }) {
             href="#home"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex shrink-0 items-center gap-2.5 pl-1"
+            className="flex min-w-0 shrink-0 items-center gap-2 pl-0.5 sm:gap-2.5 sm:pl-1"
             aria-label={`${site.brand} home`}
           >
             <motion.span
               whileHover={{ rotate: -8, scale: 1.06 }}
               transition={{ type: "spring", stiffness: 400, damping: 18 }}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-black"
-            >
-              
-            </motion.span>
-            <span className="text-[15px] font-semibold tracking-tight text-zinc-900 sm:text-base">
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-black"
+            />
+            <span className="truncate text-sm font-semibold tracking-tight text-zinc-900 sm:text-[15px] md:text-base">
               My<span className="text-primary">Portfolio</span>
             </span>
           </motion.a>
@@ -180,7 +178,7 @@ export function Navbar({ site }: { site: SiteContent }) {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.4, ease: easeOut }}
-            className="flex shrink-0 items-center gap-2"
+            className="flex shrink-0 items-center gap-1.5 sm:gap-2"
           >
             {github ? (
               <motion.a
@@ -191,7 +189,7 @@ export function Navbar({ site }: { site: SiteContent }) {
                 whileHover={{ scale: 1.08, y: -1 }}
                 whileTap={{ scale: 0.94 }}
                 transition={{ type: "spring", stiffness: 420, damping: 18 }}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900 text-white"
+                className="hidden xs:inline-flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900 text-white min-[400px]:inline-flex"
               >
                 <GithubIcon className="h-4 w-4" />
               </motion.a>
@@ -281,7 +279,7 @@ export function Navbar({ site }: { site: SiteContent }) {
                   filter: "blur(4px)",
                 }}
                 transition={{ duration: 0.28, ease: easeOut }}
-                className="absolute left-0 right-0 top-[calc(100%+10px)] overflow-hidden rounded-[28px] border border-white/80 bg-white p-3 shadow-[0_18px_50px_rgba(0,0,0,0.28)] lg:hidden"
+                className="absolute left-0 right-0 top-[calc(100%+8px)] max-h-[min(70vh,520px)] overflow-y-auto overscroll-contain rounded-[24px] border border-white/80 bg-white p-3 shadow-[0_18px_50px_rgba(0,0,0,0.28)] sm:rounded-[28px] lg:hidden"
               >
                 <ul className="flex flex-col gap-1">
                   {navLinks.map((link, index) => (

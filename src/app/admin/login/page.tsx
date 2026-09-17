@@ -54,12 +54,12 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
+    <div className="flex min-h-[100svh] items-center justify-center px-4 py-8">
       <form
         action={onSubmit}
-        className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-2xl"
+        className="w-full max-w-md rounded-2xl border border-border bg-card p-5 shadow-2xl sm:p-6"
       >
-        <h1 className="text-2xl font-semibold">Admin Login</h1>
+        <h1 className="text-xl font-semibold sm:text-2xl">Admin Login</h1>
         <p className="mt-2 text-sm text-muted">
           Sign in to manage portfolio content.
         </p>

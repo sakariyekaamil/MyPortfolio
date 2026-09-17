@@ -54,7 +54,7 @@ export function Contact({ site }: { site: SiteContent }) {
   return (
     <section
       id="contact"
-      className="relative border-t border-border/60 bg-transparent py-20 md:py-28"
+      className="relative border-t border-border/60 bg-transparent py-14 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
@@ -62,7 +62,7 @@ export function Contact({ site }: { site: SiteContent }) {
           subtitle="Have a project, business idea, or software challenge? Let's talk."
         />
 
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
           <Reveal>
             <div className="space-y-6">
               <div className="rounded-2xl border border-border bg-card p-5">
@@ -208,7 +208,7 @@ export function Contact({ site }: { site: SiteContent }) {
                 ) : null}
               </div>
 
-              <Button type="submit" size="lg" disabled={submitting}>
+              <Button type="submit" size="lg" disabled={submitting} className="w-full sm:w-auto">
                 {submitting ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />

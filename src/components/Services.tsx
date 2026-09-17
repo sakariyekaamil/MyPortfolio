@@ -28,7 +28,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
       whileHover={{ y: -4 }}
-      className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
+      className="rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary/40 sm:p-6"
     >
       <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-primary">
         <Icon className="h-5 w-5" />
@@ -45,7 +45,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export function Services() {
   return (
-    <section id="services" className="relative border-y border-border/60 bg-transparent py-20 md:py-28">
+    <section id="services" className="relative border-y border-border/60 bg-transparent py-14 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Services"

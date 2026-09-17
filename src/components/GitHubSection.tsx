@@ -21,7 +21,7 @@ export function GitHubSection({ site }: { site?: SiteContent }) {
   }, []);
 
   return (
-    <section id="github" className="relative py-20 md:py-28">
+    <section id="github" className="relative py-14 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Building, Learning & Creating"

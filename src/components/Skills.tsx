@@ -161,7 +161,7 @@ export function Skills({
   return (
     <section
       id="skills"
-      className="relative border-y border-border/60 bg-transparent py-20 md:py-28"
+      className="relative border-y border-border/60 bg-transparent py-14 sm:py-20 md:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
@@ -169,41 +169,29 @@ export function Skills({
           subtitle="Technologies I use to design, build, and ship production software."
         />
 
-        <div className="space-y-10">
+        <div className="space-y-8 sm:space-y-10">
           {categories.map((category) => {
             const categorySkills = skills.filter(
               (skill) => skill.category === category
             );
-
-            const pairs: Skill[][] = [];
-            for (let i = 0; i < categorySkills.length; i += 2) {
-              pairs.push(categorySkills.slice(i, i + 2));
-            }
 
             return (
               <Reveal key={category}>
                 <div>
                   <h3
                     className={cn(
-                      "mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-primary"
+                      "mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary sm:mb-4 sm:text-sm"
                     )}
                   >
                     {category}
                   </h3>
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {pairs.map((pair) => (
-                      <div
-                        key={pair.map((skill) => skill.name).join("-")}
-                        className="flex flex-col gap-3"
-                      >
-                        {pair.map((skill, index) => (
-                          <SkillCard
-                            key={skill.name}
-                            skill={skill}
-                            index={index}
-                          />
-                        ))}
-                      </div>
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {categorySkills.map((skill, index) => (
+                      <SkillCard
+                        key={skill.name}
+                        skill={skill}
+                        index={index}
+                      />
                     ))}
                   </div>
                 </div>

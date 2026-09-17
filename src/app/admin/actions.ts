@@ -74,7 +74,6 @@ export async function createProjectAction(formData: FormData) {
   await requireAdmin();
   const title = String(formData.get("title") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim();
-  const image = String(formData.get("image") ?? "").trim() || "/projects/events.svg";
   const githubUrl = String(formData.get("githubUrl") ?? "").trim() || null;
   const liveUrl = String(formData.get("liveUrl") ?? "").trim() || null;
   const technologies = String(formData.get("technologies") ?? "")
@@ -84,6 +83,44 @@ export async function createProjectAction(formData: FormData) {
 
   if (!title || !description) {
     return { error: "Title and description are required." };
+  }
+
+  let image = "/projects/events.svg";
+  const imageFile = formData.get("image");
+
+  if (imageFile instanceof File && imageFile.size > 0) {
+    const allowed = new Set([
+      "image/png",
+      "image/jpeg",
+      "image/webp",
+      "image/gif",
+      "image/svg+xml",
+    ]);
+    if (!allowed.has(imageFile.type)) {
+      return { error: "Upload a PNG, JPG, WEBP, GIF, or SVG image." };
+    }
+    if (imageFile.size > 5 * 1024 * 1024) {
+      return { error: "Image must be smaller than 5MB." };
+    }
+
+    const { mkdir, writeFile } = await import("fs/promises");
+    const { join } = await import("path");
+    const ext =
+      imageFile.type === "image/png"
+        ? "png"
+        : imageFile.type === "image/jpeg"
+          ? "jpg"
+          : imageFile.type === "image/webp"
+            ? "webp"
+            : imageFile.type === "image/gif"
+              ? "gif"
+              : "svg";
+    const filename = `project-${Date.now()}.${ext}`;
+    const uploadDir = join(process.cwd(), "public", "projects", "uploads");
+    await mkdir(uploadDir, { recursive: true });
+    const buffer = Buffer.from(await imageFile.arrayBuffer());
+    await writeFile(join(uploadDir, filename), buffer);
+    image = `/projects/uploads/${filename}`;
   }
 
   const count = await prisma.project.count();

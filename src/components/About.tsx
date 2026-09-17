@@ -54,13 +54,13 @@ function ParagraphWithName({
 
 export function About({ site }: { site: SiteContent }) {
   return (
-    <section id="about" className="relative py-20 md:py-28">
+    <section id="about" className="relative py-14 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading title="About Me" subtitle={site.aboutSubtitle} />
 
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
           <Reveal>
-            <div className="space-y-5 text-base leading-relaxed text-muted md:text-lg">
+            <div className="space-y-4 text-sm leading-relaxed text-muted sm:space-y-5 sm:text-base md:text-lg">
               {site.aboutParagraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 48)}>
                   <ParagraphWithName text={paragraph} name={site.name} />

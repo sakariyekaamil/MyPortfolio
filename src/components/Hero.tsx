@@ -45,28 +45,28 @@ export function Hero({ site }: { site: SiteContent }) {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden gradient-mesh pt-24 pb-16 md:pt-28 md:pb-24"
+      className="relative min-h-[100svh] overflow-hidden gradient-mesh pt-24 pb-12 sm:pt-28 sm:pb-16 md:pb-24"
     >
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8">
-        <div>
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8">
+        <div className="min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"
+            className="inline-flex max-w-full items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-[11px] font-medium text-primary sm:text-xs"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2 shrink-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            Available for opportunities
+            <span className="truncate">Available for opportunities</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-[3.4rem] lg:leading-[1.1]"
+            className="mt-5 text-[2rem] font-semibold leading-[1.15] tracking-tight sm:mt-6 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.1]"
           >
             Hi, I&apos;m {firstName}.
             <br />
@@ -77,7 +77,7 @@ export function Hero({ site }: { site: SiteContent }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.14 }}
-            className="mt-4 text-lg text-primary font-medium"
+            className="mt-3 text-base font-medium text-primary sm:mt-4 sm:text-lg"
           >
             {site.title}
           </motion.p>
@@ -86,7 +86,7 @@ export function Hero({ site }: { site: SiteContent }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.18 }}
-            className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-muted"
+            className="mt-3 max-w-xl text-sm leading-relaxed text-muted sm:mt-4 sm:text-base md:text-lg"
           >
             {site.heroDescription}
           </motion.p>
@@ -95,16 +95,16 @@ export function Hero({ site }: { site: SiteContent }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.24 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap"
           >
-            <a href="#projects">
-              <Button size="lg">
+            <a href="#projects" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto">
                 View My Work
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </a>
-            <a href="#contact">
-              <Button size="lg" variant="secondary">
+            <a href="#contact" className="w-full sm:w-auto">
+              <Button size="lg" variant="secondary" className="w-full sm:w-auto">
                 Contact Me
               </Button>
             </a>
@@ -128,19 +128,19 @@ export function Hero({ site }: { site: SiteContent }) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative mx-auto w-full max-w-md lg:max-w-none"
         >
-          <div className="absolute -inset-4 rounded-3xl bg-primary/10 blur-3xl" />
+          <div className="absolute -inset-4 hidden rounded-3xl bg-primary/10 blur-3xl sm:block" />
 
-          <div className="relative glass rounded-2xl p-5 shadow-2xl shadow-black/40">
+          <div className="relative glass rounded-2xl p-4 shadow-2xl shadow-black/40 sm:p-5">
             <div className="mb-4 flex items-center gap-2 border-b border-border/80 pb-3">
               <span className="h-3 w-3 rounded-full bg-red-500/80" />
               <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
               <span className="h-3 w-3 rounded-full bg-primary/80" />
-              <span className="ml-3 font-mono text-xs text-muted">
+              <span className="ml-3 truncate font-mono text-xs text-muted">
                 {nameSlug}.dev.tsx
               </span>
             </div>
 
-            <pre className="overflow-x-auto font-mono text-[12px] sm:text-[13px] leading-6 text-muted">
+            <pre className="overflow-x-auto font-mono text-[11px] leading-5 text-muted sm:text-[13px] sm:leading-6">
               <code>
                 <span className="text-primary">const</span>{" "}
                 <span className="text-foreground">developer</span> = {"{"}
@@ -187,17 +187,17 @@ export function Hero({ site }: { site: SiteContent }) {
               </code>
             </pre>
 
-            <div className="mt-5 grid grid-cols-2 gap-3">
-              <div className="rounded-xl border border-border bg-surface p-3">
-                <p className="text-xs text-muted">Status</p>
-                <p className="mt-1 flex items-center gap-1.5 text-sm font-medium text-primary">
-                  <Sparkles className="h-3.5 w-3.5" />
+            <div className="mt-5 grid grid-cols-2 gap-2 sm:gap-3">
+              <div className="rounded-xl border border-border bg-surface p-2.5 sm:p-3">
+                <p className="text-[11px] text-muted sm:text-xs">Status</p>
+                <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-primary sm:text-sm">
+                  <Sparkles className="h-3.5 w-3.5 shrink-0" />
                   Open to work
                 </p>
               </div>
-              <div className="rounded-xl border border-border bg-surface p-3">
-                <p className="text-xs text-muted">Based in</p>
-                <p className="mt-1 text-sm font-medium text-foreground">
+              <div className="rounded-xl border border-border bg-surface p-2.5 sm:p-3">
+                <p className="text-[11px] text-muted sm:text-xs">Based in</p>
+                <p className="mt-1 truncate text-xs font-medium text-foreground sm:text-sm">
                   {site.location}
                 </p>
               </div>
@@ -207,14 +207,14 @@ export function Hero({ site }: { site: SiteContent }) {
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-3 top-16 rounded-xl border border-border bg-card px-3 py-2 text-xs text-muted shadow-lg"
+            className="absolute -left-2 top-14 hidden rounded-xl border border-border bg-card px-3 py-2 text-xs text-muted shadow-lg sm:block md:-left-3 md:top-16"
           >
             Next.js · Prisma
           </motion.div>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-2 bottom-24 rounded-xl border border-border bg-card px-3 py-2 text-xs text-muted shadow-lg"
+            className="absolute -right-1 bottom-20 hidden rounded-xl border border-border bg-card px-3 py-2 text-xs text-muted shadow-lg sm:block md:-right-2 md:bottom-24"
           >
             REST APIs · Auth
           </motion.div>

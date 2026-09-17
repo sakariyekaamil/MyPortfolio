@@ -8,7 +8,7 @@ export function Education() {
   const certificates = education.filter((item) => item.type === "certificate");
 
   return (
-    <section id="education" className="relative py-20 md:py-28">
+    <section id="education" className="relative py-14 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Education"
