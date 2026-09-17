@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
-:root {
+:root,
+html.dark {
+  --background: #050505;
+  --card: #0d0d0d;
+  --primary: #22c55e;
+  --primary-dark: #15803d;
+  --foreground: #ffffff;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --surface: #111111;
+  --surface-elevated: #161616;
+  --mesh-base: #050505;
+  --grid-line: rgba(39, 39, 42, 0.35);
+  --gradient-start: #ffffff;
+  --gradient-mid: #d4d4d8;
+}
+
+html.light {
   --background: #ffffff;
-  --foreground: #171717;
+  --card: #ffffff;
+  --primary: #16a34a;
+  --primary-dark: #15803d;
+  --foreground: #0a0a0a;
+  --muted: #52525b;
+  --border: #e5e5e5;
+  --surface: #f5f5f5;
+  --surface-elevated: #ffffff;
+  --mesh-base: #ffffff;
+  --grid-line: rgba(0, 0, 0, 0.06);
+  --gradient-start: #0a0a0a;
+  --gradient-mid: #3f3f46;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 35%, transparent);
+  color: white;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(34, 197, 94, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(21, 128, 61, 0.12), transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(34, 197, 94, 0.06), transparent 60%),
+    var(--mesh-base);
+}
+
+html.light .gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(22, 163, 74, 0.08), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(21, 128, 61, 0.05), transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(22, 163, 74, 0.04), transparent 60%),
+    #ffffff;
+}
+
+.grid-overlay {
+  display: none;
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start) 0%,
+    var(--gradient-mid) 45%,
+    var(--primary) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

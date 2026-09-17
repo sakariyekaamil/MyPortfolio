@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#0D0D0D"/>
+  <rect x="60" y="70" width="680" height="360" rx="24" fill="#111111" stroke="#27272A"/>
+  <rect x="100" y="120" width="220" height="140" rx="16" fill="#15803D" opacity="0.35"/>
+  <rect x="340" y="120" width="320" height="40" rx="10" fill="#22C55E" opacity="0.25"/>
+  <rect x="340" y="180" width="260" height="20" rx="8" fill="#27272A"/>
+  <rect x="340" y="220" width="200" height="20" rx="8" fill="#27272A"/>
+  <circle cx="150" cy="340" r="28" fill="#22C55E" opacity="0.5"/>
+  <rect x="200" y="320" width="180" height="16" rx="8" fill="#A1A1AA" opacity="0.35"/>
+  <rect x="200" y="348" width="120" height="12" rx="6" fill="#27272A"/>
+  <text x="100" y="430" fill="#22C55E" font-family="Arial, sans-serif" font-size="20" font-weight="700">Restaurant System</text>
+</svg>
